@@ -10,6 +10,8 @@ import { ErrorsPage } from 'app/modules/errors/ErrorsPage';
 import { token } from '../../constants';
 import PopularMovie from 'pages/movies/PopularMovie';
 import NowPlayingMovie from 'pages/movies/NowPlayingMovie';
+import UpComingMovie from 'pages/movies/UpComingMovie';
+import TopRatedMovie from 'pages/movies/TopratedMovie';
 
 export function PrivateRoutes() {
   const { pathname } = useLocation();
@@ -31,6 +33,12 @@ export function PrivateRoutes() {
           </Route>
           <Route path={Path.playingmovie}>
             <Route index element={<NowPlayingMovie />} />
+          </Route>
+          <Route path={Path.upcomingmovie}>
+            <Route index element={<UpComingMovie />} />
+          </Route>
+          <Route path={Path.topratedmovie}>
+            <Route index element={<TopRatedMovie />} />
           </Route>
         </Route>
 

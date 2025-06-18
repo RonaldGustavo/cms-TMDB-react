@@ -1,9 +1,9 @@
-import { getListMoviePlaying } from 'app/services/tmdb.service';
 import { PageLink, PageTitle } from 'components/layout/core';
 import React, { useCallback, useEffect, useState } from 'react';
-import TableNowPlaying from './components/tableNowPlaying';
+import { getListToprated } from 'app/services/tmdb.service';
+import TableToprated from './components/tableToprated';
 
-const NowPlayingMovie: React.FC = () => {
+const TopRatedMovie: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<any>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,16 +35,12 @@ const NowPlayingMovie: React.FC = () => {
       accessor: 'original_language',
     },
     {
-      Header: 'Overview',
-      accessor: 'overview',
-    },
-    {
       Header: 'Adult',
       accessor: 'adult',
     },
     {
-      Header: 'Release Date',
-      accessor: 'release_date',
+      Header: 'Overview',
+      accessor: 'overview',
     },
     {
       Header: 'Popularity',
@@ -58,11 +54,15 @@ const NowPlayingMovie: React.FC = () => {
       Header: 'Total Vote',
       accessor: 'vote_count',
     },
+    {
+      Header: 'Release Date',
+      accessor: 'release_date',
+    },
   ];
 
   useEffect(()=> {
     setIsLoading(true)
-    getListMoviePlaying(page).then((data: any)=> {
+    getListToprated(page).then((data: any)=> {
       setData(data?.data);
     }).catch((e:any)=> {}).finally(()=> {
       setIsLoading(false)
@@ -78,8 +78,8 @@ const NowPlayingMovie: React.FC = () => {
 
   return (
     <>
-      <PageTitle breadcrumbs={breadCumbs}>Now Playing</PageTitle>
-      <TableNowPlaying
+      <PageTitle breadcrumbs={breadCumbs}>Top Rated</PageTitle>
+      <TableToprated
         columns={columns}
         data={data}
         page={page}
@@ -91,4 +91,4 @@ const NowPlayingMovie: React.FC = () => {
   );
 };
 
-export default NowPlayingMovie;
+export default TopRatedMovie;

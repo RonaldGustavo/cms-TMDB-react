@@ -24,6 +24,18 @@ const AsideMenuMain = () => {
           fontIcon="bi-layers"
           hasBullet={true}
         />
+        <AsideMenuItem
+          to="upcomingmovie"
+          title="Up Coming"
+          fontIcon="bi-layers"
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to="topratedmovie"
+          title="Top Rated"
+          fontIcon="bi-layers"
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
     </>
   );
