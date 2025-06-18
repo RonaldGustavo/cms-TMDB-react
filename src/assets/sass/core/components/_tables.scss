@@ -1,0 +1,277 @@
+//
+// Table
+//
+
+// .table-responsive {
+//   overflow-x: unset !important;
+// }
+
+// Table
+.table {
+  width: 100%;
+
+  > :not(:last-child) > :last-child > * {
+    border-bottom-color: inherit;
+  }
+
+  tr,
+  th,
+  td {
+    border-color: inherit;
+    border-width: inherit;
+    border-style: inherit;
+    text-transform: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    height: inherit;
+    min-height: inherit;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  tfoot,
+  tbody {
+    tr:last-child {
+      border-bottom: 0 !important;
+
+      th,
+      td {
+        border-bottom: 0 !important;
+      }
+    }
+  }
+
+  tfoot {
+    th,
+    td {
+      border-top: inherit;
+    }
+  }
+
+  // Rounded
+  &.table-rounded {
+    border-radius: $border-radius;
+    border-spacing: 0;
+    border-collapse: separate;
+  }
+
+  // Flush
+  &.table-flush {
+    tr,
+    th,
+    td {
+      padding: inherit;
+    }
+  }
+
+  // Row bordered
+  &.table-row-bordered {
+    tr {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: $border-color;
+    }
+
+    tfoot {
+      th,
+      td {
+        border-top-width: 1px !important;
+      }
+    }
+  }
+
+  // Row dashed
+  &.table-row-dashed {
+    tr {
+      border-bottom-width: 1px;
+      border-bottom-style: dashed;
+      border-bottom-color: $border-color;
+    }
+
+    tfoot {
+      th,
+      td {
+        border-top-width: 1px !important;
+      }
+    }
+  }
+
+  // Row border colors
+  @each $color, $value in $grays {
+    &.table-row-gray-#{$color} {
+      tr {
+        border-bottom-color: $value;
+      }
+    }
+  }
+}
+
+// Cell gutters
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $name, $value in $gutters {
+      .table.g#{$infix}-#{$name} {
+        th,
+        td {
+          padding: $value;
+        }
+      }
+
+      .table.gy#{$infix}-#{$name} {
+        th,
+        td {
+          padding-top: $value;
+          padding-bottom: $value;
+        }
+      }
+
+      .table.gx#{$infix}-#{$name} {
+        th,
+        td {
+          padding-left: $value;
+          padding-right: $value;
+        }
+      }
+
+      .table.gs#{$infix}-#{$name} {
+        th,
+        td {
+          &:first-child {
+            padding-left: $value;
+          }
+
+          &:last-child {
+            padding-right: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+// focus input table
+.ant-table-row {
+  .ant-table-cell {
+    .editable-cell-value-wrap {
+      border-radius: 0.475rem;
+    }
+
+    .ant-input {
+      &:focus {
+        border-color: #57a8e9;
+        outline: 0;
+        -webkit-box-shadow: 0 0 0 2px rgba(87, 168, 233, 0.2);
+        box-shadow: 0 0 0 2px rgba(87, 168, 233, 0.2);
+      }
+    }
+  }
+}
+
+.card-table {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 15%;
+  padding: 6px 5% 0 5%;
+
+  &-left {
+    width: 30%;
+
+    h5, p {
+      width: 50%;
+    }
+  }
+
+  &-right {
+    width: 70%;
+
+    .content {
+      &-container {
+        width: 100%;
+      }
+
+      &-item {
+        h5, p {
+          width: 50%;
+        }
+      }
+    }
+
+    .items-container {
+      width: 100%;
+    }
+  }
+
+  .content {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+
+    &-item {      
+      display: flex;
+      justify-content: space-between;
+      column-gap: 42px;
+
+      h5 {
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      p {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+  }
+
+  .items-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    .item {
+      display: flex;
+      column-gap: 12px;
+    }
+  }
+
+  &-footer {
+    margin-top: 24px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #E7EAEE;
+
+    &.footer-end {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &-navigation {
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+
+      button {
+        width: 30%;
+      }
+
+      .text-right {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

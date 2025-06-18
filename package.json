@@ -1,0 +1,123 @@
+{
+  "name": "cms-tmdb-ronald",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@popperjs/core": "^2.9.2",
+    "@reduxjs/toolkit": "^1.6.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/bootstrap": "^5.0.16",
+    "@types/jest": "^26.0.15",
+    "@types/react": "^17.0.40",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^3.0.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
+    "animate.css": "^4.1.1",
+    "antd": "^4.24.1",
+    "apexcharts": "^3.27.1",
+    "axios": "^0.21.4",
+    "axios-mock-adapter": "^1.19.0",
+    "bootstrap": "^5.0.2",
+    "bootstrap-icons": "^1.5.0",
+    "clsx": "^1.1.1",
+    "formik": "^2.2.9",
+    "jest-react-hooks-shallow": "^1.5.1",
+    "js-base64": "^3.7.5",
+    "lint-staged": "^11.0.0",
+    "moment": "^2.29.4",
+    "nouislider": "^15.2.0",
+    "npm-run-all": "^4.1.5",
+    "path": "^0.12.7",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.6.0",
+    "react-bootstrap-v5": "^1.4.0",
+    "react-chartjs-2": "^4.3.1",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-datepicker": "^4.7.0",
+    "react-dom": "^17.0.2",
+    "react-inlinesvg": "^2.3.0",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^6.21.3",
+    "react-scripts": "4.0.3",
+    "react-select": "^5.6.0",
+    "react-select-async-paginate": "^0.6.1",
+    "react-toastify": "^8.0.0",
+    "redux": "^4.1.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
+    "sass": "1.32.1",
+    "sha1": "^1.1.1",
+    "sweetalert2": "^11.6.14",
+    "typescript": "^4.1.2",
+    "vite": "^4.0.2",
+    "vite-plugin-env-compatible": "^1.1.1",
+    "vite-plugin-svgr": "^2.4.0",
+    "vite-tsconfig-paths": "^4.0.3",
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.9"
+  },
+  "scripts": {
+    "vite-start:prod": "vite --mode production ",
+    "vite-build:prod": "vite build --mode production ",
+    "vite-preview:prod": "vite preview --mode production",
+    "watch": "npm-run-all --parallel vite-preview vite-build",
+    "tsc:watch": "tsc -w"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "no-empty-function": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "react/display-name": "off",
+      "react/prop-types": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "react-hooks/exhaustive-deps": "off"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/draft-js": "^0.11.10",
+    "@types/node": "^12.20.55",
+    "@types/nouislider": "15.0.0",
+    "@types/react-copy-to-clipboard": "5.0.0",
+    "@types/react-datepicker": "^4.8.0",
+    "@types/react-redux": "7.1.16",
+    "@types/react-router-dom": "5.3.3",
+    "@types/sha1": "^1.1.3",
+    "@types/sinonjs__fake-timers": "^8.1.2",
+    "v": "^0.3.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "eslintIgnore": [
+    "dist/*"
+  ]
+}

@@ -1,0 +1,28 @@
+.ant-table-pagination-right {
+  .ant-pagination-options {
+    padding-right: 16px;
+  }
+}
+
+.ant-table-total-page-custom {
+  position: absolute;
+  left: 16px;
+}
+
+.ant-collapse {
+  background-color: unset;
+  border: none;
+  border-radius: 0;
+
+  &-content > .ant-collapse-content-box {
+    padding: 0;
+  }
+
+  & > .ant-collapse-item {
+    border-bottom: none;
+  }
+}
+
+.fill-bold-table {
+  font-weight: 700;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Template CMS React Ronald" />
+    <meta build-version="%REACTBUILDVERSION%" />
+    <link
+      href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet" />
+    <!-- SPLASH SCREEN-->
+    <link
+      rel="stylesheet"
+      id="layout-styles-anchor"
+      href="/splash-screen.css" />
+    <title>Template CMS React Ronald</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+  <!-- TIP: add dark-mode class to enable dark mode -->
+  <body id="kt_body" class="page-loading dark-mode">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" class="d-flex flex-column flex-root"></div>
+    <div id="splash-screen" class="splash-screen">
+      <!-- <img src="/src/assets/images/media/icons/duotune/general/gen047.svg" alt="logo" class="h-40px" /> -->
+      <img src="/src/assets/images/media/icons/duotune/general/gen047.svg" alt="logo" class="h-40px" />
+      <span>Loading ...</span>
+    </div>
+    <div id="root-modals"></div>
+    <script>
+      window.global = window;
+      var exports = {};
+    </script>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
+
