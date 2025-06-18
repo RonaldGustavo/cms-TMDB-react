@@ -5,7 +5,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from 'store/actions/Auth';
 import * as Yup from 'yup';
-import { IS_LOADING } from 'constants';
+import { IS_LOADING } from '../../../constants';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -33,25 +33,20 @@ export default function LoginPage() {
         payload: true,
       });
       await emailSchema.validate(username);
-      if (username.toLowerCase() === 'ronald@gmail.com' && password.toLowerCase() === 'admin') {
+      if (
+        username.toLowerCase() === 'ronald@gmail.com' &&
+        password.toLowerCase() === 'admin'
+      ) {
         dispatch(loginAction(username));
-      } else if (!username && !password) {
-        setTimeout(() => {
-          dispatch({
-            type: IS_LOADING,
-            payload: false,
-          });
-          toast.error('Anda harus mengisi Email dan Password!', {
-            theme: 'colored',
-          });
-        }, 500);
       } else {
         setTimeout(() => {
           dispatch({
             type: IS_LOADING,
             payload: false,
           });
-          toast.error('Wrong Username & Password!', { theme: 'colored' });
+          toast.error('Email: Ronald@gmail.com, Pass: admin', {
+            theme: 'colored',
+          });
         }, 500);
       }
     } catch (error: any) {

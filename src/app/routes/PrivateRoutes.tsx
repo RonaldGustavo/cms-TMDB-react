@@ -7,9 +7,9 @@ import { Error404 } from 'app/modules/errors/components/Error404';
 import { Error500 } from 'app/modules/errors/components/Error500';
 import { ErrorsPage } from 'app/modules/errors/ErrorsPage';
 
-import { token } from 'constants';
-import Menu1 from 'pages/menu1';
-import Menu2 from 'pages/menu2';
+import { token } from '../../constants';
+import PopularMovie from 'pages/movies/PopularMovie';
+import NowPlayingMovie from 'pages/movies/NowPlayingMovie';
 
 export function PrivateRoutes() {
   const { pathname } = useLocation();
@@ -25,12 +25,12 @@ export function PrivateRoutes() {
     <Suspense fallback={<FallbackView />}>
       <Routes>
         <Route element={<MasterLayout />}>
-          <Route index element={<Navigate to={'menu1'} />} />
-          <Route path={Path.menu1}>
-            <Route index element={<Menu1 />} />
+          <Route index element={<Navigate to={'popularmovie'} />} />
+          <Route path={Path.popular}>
+            <Route index element={<PopularMovie />} />
           </Route>
-          <Route path={Path.menu2}>
-            <Route index element={<Menu2 />} />
+          <Route path={Path.playingmovie}>
+            <Route index element={<NowPlayingMovie />} />
           </Route>
         </Route>
 

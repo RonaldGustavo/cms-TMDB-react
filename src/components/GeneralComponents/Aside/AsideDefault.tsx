@@ -33,7 +33,7 @@ const AsideDefault: FC = () => {
               src="/public/favicon.ico"
               /> */}
             <h3 className="mb-0" style={{ color: 'white', marginLeft: '10px' }}>
-              Template CMS React
+              TMDB Ronald App
             </h3>
           </div>
         ) : (

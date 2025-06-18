@@ -5,6 +5,7 @@ type Props = {
   path: string;
   svgClassName?: string;
   onClick?: () => void;
+  useDefaultClass?: boolean;
 };
 
 const KTSVG: React.FC<Props> = ({
@@ -12,13 +13,18 @@ const KTSVG: React.FC<Props> = ({
   path,
   svgClassName = 'mh-50px',
   onClick,
+  useDefaultClass = true,
 }) => {
+  const wrapperClass = useDefaultClass
+    ? `svg-icon ${className}`.trim()
+    : className;
+
   return (
-    <span onClick={onClick} className={`svg-icon ${className}`}>
-      {/* <SVG src={toAbsoluteUrl(path)} className={svgClassName} /> */}
+    <span onClick={onClick} className={wrapperClass}>
       <SVG src={path} className={svgClassName} />
     </span>
   );
 };
 
 export { KTSVG };
+

@@ -1,5 +1,4 @@
-import { GET_DATA_USER } from 'constants';
-import { IS_LOADING } from 'constants';
+import { IS_LOADING, GET_DATA_USER } from '../../constants';
 import { setCookie } from 'utilities/cookiesHelper';
 
 export const loginAction = (userName: string) => {
@@ -31,7 +30,7 @@ export const loginAction = (userName: string) => {
           payload: false,
         });
 
-        window.location.href = '/menu1';
+        window.location.href = '/popularmovie';
       }, 1000);
     } catch (error: any) {
       throw error;

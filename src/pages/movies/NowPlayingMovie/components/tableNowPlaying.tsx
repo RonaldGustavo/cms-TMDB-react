@@ -1,21 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { KTSVG } from '../../../utilities';
+import { KTSVG } from '../../../../utilities';
 import {
-  Edit,
+  Stars,
   Detail,
-  Delete,
-  Download,
   YesCircle,
   NoCircle,
-  Stars,
-} from '../../../utilities/ImageImport';
+} from '../../../../utilities/ImageImport';
 import { useEffect, useState } from 'react';
 import { Spin, Empty, Pagination } from 'antd';
-import Swal from 'sweetalert2';
 
 import moment from 'moment';
+import { getDetailMovie } from 'app/services/tmdb.service';
+import ModalDetailPopularMovie from 'pages/movies/components/modalDetail';
 
 type Props = {
   // required
@@ -35,11 +33,12 @@ type Props = {
   functions?: any;
 };
 
-const BaseTable = (props: Props) => {
+const TableNowPlaying = (props: Props) => {
   const [page, setPage] = useState<number>(1);
   const [perPage] = useState<number>(20);
   const [pageShowCurr, setPageShowCurr] = useState<number>(1);
-  const [showSelectedPage] = useState([10, 20, 30, 40, 50]);
+  const [modalDetail, setModalDetail] = useState<boolean>(false);
+  const [dataDetail, setDataDetail] = useState<any>({});
 
   const startData = (page - 1) * perPage + 1;
   const endData = Math.min(
@@ -58,39 +57,14 @@ const BaseTable = (props: Props) => {
   }, [props.page, props.data, pageShowCurr]);
 
   const handleViewDetail = (item: any) => {
-    alert(`handle detail ${item.email}`);
-  };
-
-  const handleEdit = (item: any) => {
-    alert(`handle edit ${item.email}`);
-  };
-
-  const handleDownload = (item: any) => {
-    Swal.fire({
-      title: 'Apakah Anda yakin?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: '<span style="color: white">Yes</span>',
-      cancelButtonText: '<span style="color: white">No</span>',
-      confirmButtonColor: '#28a745',
-      cancelButtonColor: '#dc3545',
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Berhasil!',
-          text: `Berhasil Download ${item.email}`,
-          icon: 'success',
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#15ACE1',
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-        });
-      } else {
-        Swal.fire('Gagal', 'Gagal Download', 'error');
-      }
+    getDetailMovie(item?.id).then((data: any) => {
+      setDataDetail(data?.data);
+      setModalDetail(true);
     });
+  };
+
+  const handleCloseModalDetail = () => {
+    setModalDetail(false);
   };
 
   const generateHeader = () =>
@@ -129,27 +103,6 @@ const BaseTable = (props: Props) => {
           >
             <KTSVG path={Detail} className="svg-icon-3" />
           </button>
-        ) : placement === 'Edit' ? (
-          <button
-            className="btn btn-icon btn-light-warning btn-sm me-1"
-            onClick={() => handleEdit(item)}
-          >
-            <KTSVG path={Edit} className="svg-icon-3" />
-          </button>
-        ) : placement === 'Delete' ? (
-          <button
-            className="btn btn-icon btn-light-danger btn-sm me-1"
-            onClick={() => props.functions.handleDelete(item._id || item.id)}
-          >
-            <KTSVG path={Delete} className="svg-icon-3" />
-          </button>
-        ) : placement === 'Download' ? (
-          <button
-            className="btn btn-icon btn-light-success btn-sm me-1"
-            onClick={() => handleDownload(item)}
-          >
-            <KTSVG path={Download} className="svg-icon-3" />
-          </button>
         ) : (
           <></>
         )}
@@ -160,17 +113,6 @@ const BaseTable = (props: Props) => {
     const value = item[col.accessor];
 
     switch (col.accessor) {
-      case 'status':
-        return (
-          <>
-            {item[col.sub_accessor || col.accessor] === 'success' ? (
-              <KTSVG path={YesCircle} className="svg-icon-3 svg-icon-success" />
-            ) : (
-              <KTSVG path={NoCircle} className="svg-icon-3 svg-icon-danger" />
-            )}
-          </>
-        );
-
       case 'vote_average':
         return (
           <p
@@ -189,6 +131,20 @@ const BaseTable = (props: Props) => {
             />
           </p>
         );
+
+      case 'adult':
+        return (
+          <>
+            {value === true ? (
+              <KTSVG path={YesCircle} className="svg-icon-3 svg-icon-success" />
+            ) : (
+              <KTSVG path={NoCircle} className="svg-icon-3 svg-icon-danger" />
+            )}
+          </>
+        );
+
+      case 'overview':
+        return value?.length > 40 ? value.slice(0, 40) + '...' : value;
 
       case 'release_date':
         return moment(value).format('DD MMM YYYY');
@@ -225,7 +181,7 @@ const BaseTable = (props: Props) => {
     <div className="card px-5">
       {!props.loading ? (
         <>
-          {props.data?.results && props.data?.results.length > 0 ? (
+          {props.data?.results && props.data?.results?.length > 0 ? (
             <>
               <div className="table-responsive">
                 <table
@@ -233,23 +189,7 @@ const BaseTable = (props: Props) => {
                   id="table"
                 >
                   <thead>
-                    <tr className="text-muted">
-                      {generateHeader()}
-                      {!props.noaction && (
-                        <th
-                          className="text-center "
-                          style={{
-                            minWidth: '140px',
-                            width: '140px',
-                            paddingLeft: '0.75rem',
-                            paddingTop: '1.5rem',
-                            paddingBottom: '1.5rem',
-                          }}
-                        >
-                          Actions
-                        </th>
-                      )}
-                    </tr>
+                    <tr className="text-muted">{generateHeader()}</tr>
                   </thead>
                   <tbody className="mx-4">{generateBody()}</tbody>
                 </table>
@@ -271,7 +211,7 @@ const BaseTable = (props: Props) => {
                     pageSize={perPage}
                     total={Math.min(
                       props.data?.total_results || 0,
-                      500 * perPage // karena batasnya adalah 500 page
+                      500 * perPage
                     )}
                     showSizeChanger={false}
                     onChange={(page) => {
@@ -313,8 +253,13 @@ const BaseTable = (props: Props) => {
           </div>
         </div>
       )}
+        <ModalDetailPopularMovie
+        hideModal={handleCloseModalDetail}
+        modal={modalDetail}
+        data={dataDetail}
+      />
     </div>
   );
 };
 
-export default BaseTable;
+export default TableNowPlaying;

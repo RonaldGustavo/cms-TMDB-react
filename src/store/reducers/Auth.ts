@@ -1,4 +1,4 @@
-import { GET_DATA_USER } from "constants";
+import { GET_DATA_USER } from "../../constants";
 
 const INITIAL_STATE = {
   dataUser: {},

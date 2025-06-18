@@ -3,8 +3,7 @@ import { useNavigate, Outlet } from 'react-router-dom';
 
 import { toAbsoluteUrl } from '../../../utilities';
 import { Access } from 'utilities/ImageImport';
-import { getCookie } from 'utilities/cookiesHelper';
-import { token } from 'constants';
+import { token } from '../../../constants';
 
 const ErrorsPage: React.FC = () => {
   const navigate = useNavigate();
