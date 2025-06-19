@@ -37,6 +37,46 @@ const AsideMenuMain = () => {
           hasBullet={true}
         />
       </AsideMenuItemWithSub>
+      <AsideMenuItemWithSub
+        to="/"
+        title="Genres"
+        icon={Dashboard}
+        fontIcon="bi-layers"
+        hasBullet={false}
+      >
+        <AsideMenuItem
+          to="genremovie"
+          title="Movie"
+          fontIcon="bi-layers"
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to="genretv"
+          title="TV"
+          fontIcon="bi-layers"
+          hasBullet={true}
+        />
+      </AsideMenuItemWithSub>
+      <AsideMenuItemWithSub
+        to="/"
+        title="Providers"
+        icon={Dashboard}
+        fontIcon="bi-layers"
+        hasBullet={false}
+      >
+        <AsideMenuItem
+          to="providermovie"
+          title="Movie"
+          fontIcon="bi-layers"
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to="providertv"
+          title="TV"
+          fontIcon="bi-layers"
+          hasBullet={true}
+        />
+      </AsideMenuItemWithSub>
     </>
   );
 };

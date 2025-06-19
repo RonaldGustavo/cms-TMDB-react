@@ -5,6 +5,7 @@ import TableNowPlaying from './components/tableUpComing';
 
 const UpComingMovie: React.FC = () => {
   const [page, setPage] = useState<number>(1);
+  const [region, setRegion] = useState<any>('');
   const [data, setData] = useState<any>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -60,14 +61,24 @@ const UpComingMovie: React.FC = () => {
     },
   ];
 
+   const dataRegion = [
+  { code: 'US', label: '🇺🇸 United States' },
+  { code: 'ID', label: '🇮🇩 Indonesia' },
+  { code: 'JP', label: '🇯🇵 Japan' },
+  { code: 'KR', label: '🇰🇷 Korea' },
+  { code: 'GB', label: '🇬🇧 UK' },
+  { code: 'FR', label: '🇫🇷 France' },
+  { code: 'DE', label: '🇩🇪 Germany' },
+]; 
+
   useEffect(()=> {
     setIsLoading(true)
-    getListUpComing(page).then((data: any)=> {
+    getListUpComing(page, region).then((data: any)=> {
       setData(data?.data);
     }).catch((e:any)=> {}).finally(()=> {
       setIsLoading(false)
     })
-  },[page])
+  },[page, region])
 
   const handleChangePage = useCallback(
     (page) => {
@@ -82,10 +93,13 @@ const UpComingMovie: React.FC = () => {
       <TableNowPlaying
         columns={columns}
         data={data}
+        dataRegion={dataRegion}
         page={page}
         arrAction={['Detail']}
         functions={{ handleChangePage }}
         loading={isLoading}
+        region={region}
+        setRegion={setRegion}
       />
     </>
   );

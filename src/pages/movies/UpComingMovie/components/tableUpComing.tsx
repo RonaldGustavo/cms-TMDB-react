@@ -14,6 +14,7 @@ import { Spin, Empty, Pagination } from 'antd';
 import moment from 'moment';
 import { getDetailMovie } from 'app/services/tmdb.service';
 import ModalDetailPopularMovie from 'pages/movies/components/modalDetail';
+import { Form } from 'react-bootstrap';
 
 type Props = {
   // required
@@ -21,6 +22,9 @@ type Props = {
   columns: any;
   page: number;
   arrAction: string[];
+  region: any;
+  setRegion: any;
+  dataRegion: any;
 
   // optional
   form?: any;
@@ -199,6 +203,21 @@ const TableUpComing = (props: Props) => {
             disabled
           />
         </div>
+      </div>
+      <div className="d-flex justify-content-end pt-3">
+        <Form.Select
+          size="sm"
+          value={props?.region}
+          onChange={(e) => props?.setRegion(e.target.value)}
+          style={{ maxWidth: 180 }}
+        >
+          {props?.dataRegion &&
+            props?.dataRegion.map((region) => (
+              <option key={region.code} value={region.code}>
+                {region.label}
+              </option>
+            ))}
+        </Form.Select>
       </div>
       {!props.loading ? (
         <>

@@ -12,6 +12,10 @@ import PopularMovie from 'pages/movies/PopularMovie';
 import NowPlayingMovie from 'pages/movies/NowPlayingMovie';
 import UpComingMovie from 'pages/movies/UpComingMovie';
 import TopRatedMovie from 'pages/movies/TopratedMovie';
+import GenreMovies from 'pages/genres/GenreMovies';
+import GenreTv from 'pages/genres/GenreTV';
+import ProviderMovie from 'pages/providers/providerMovie';
+import ProviderTv from 'pages/providers/providerTV';
 
 export function PrivateRoutes() {
   const { pathname } = useLocation();
@@ -39,6 +43,18 @@ export function PrivateRoutes() {
           </Route>
           <Route path={Path.topratedmovie}>
             <Route index element={<TopRatedMovie />} />
+          </Route>
+          <Route path={Path.genremovie}>
+            <Route index element={<GenreMovies />} />
+          </Route>
+          <Route path={Path.genretv}>
+            <Route index element={<GenreTv />} />
+          </Route>
+          <Route path={Path.providermovie}>
+            <Route index element={<ProviderMovie />} />
+          </Route>
+          <Route path={Path.providertv}>
+            <Route index element={<ProviderTv />} />
           </Route>
         </Route>
 
