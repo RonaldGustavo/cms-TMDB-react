@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { Access } from 'utilities/ImageImport';
+import { Logo } from 'utilities/ImageImport';
 
 export default function AuthLayout() {
   return (
@@ -11,8 +11,8 @@ export default function AuthLayout() {
           {/* begin::Logo */}
           <a href="#" className="mb-12">
             <div className="d-flex align-items-center">
-              <img data-testid="img-logo" alt="Logo" src={Access} className="h-45px" />
-              <h1 data-testid="text-tittle-cms-salesman"  style={{ marginLeft: '10px' }}>Template CMS React Ronald</h1>
+              <img data-testid="img-logo" alt="Logo" src={Logo} className="h-45px" />
+              <h1 data-testid="text-tittle-cms-salesman"  style={{ marginLeft: '10px' }}>CMS TMDB Ronald App</h1>
             </div>
           </a>
 

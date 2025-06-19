@@ -36,8 +36,10 @@ import ArrowRight from "../assets/images/media/icons/duotune/arrows/arr001.svg";
 import ShowData from "../assets/images/media/icons/duotune/files/fil024.svg";
 import SimpanData from "../assets/images/media/icons/duotune/files/fil025.svg";
 import Stars from "../assets/images/media/icons/stars.svg";
+import Logo from "../assets/images/media/icons/logo.jpeg";
 
 export {
+  Logo,
   Filter,
   Stars,
   Save,
