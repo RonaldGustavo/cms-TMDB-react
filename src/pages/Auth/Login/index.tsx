@@ -62,6 +62,73 @@ export default function LoginPage() {
 
   return (
     <>
+      <div
+        style={{
+          background: 'linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%)',
+          border: '1px solid #c7d7fd',
+          borderRadius: '10px',
+          padding: '16px 20px',
+          marginBottom: '24px',
+        }}
+      >
+        <div className="d-flex align-items-center mb-3">
+          <span
+            style={{
+              background: '#3b5bdb',
+              borderRadius: '6px',
+              padding: '3px 10px',
+              fontSize: '11px',
+              fontWeight: 700,
+              color: '#fff',
+              letterSpacing: '0.5px',
+              marginRight: '8px',
+            }}
+          >
+            DEMO
+          </span>
+          <span style={{ fontWeight: 600, color: '#1a1a2e', fontSize: '13px' }}>
+            Demo Account
+          </span>
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '8px',
+          }}
+        >
+          <div
+            style={{
+              background: '#fff',
+              borderRadius: '8px',
+              padding: '8px 12px',
+              border: '1px solid #dce3f9',
+            }}
+          >
+            <div style={{ fontSize: '10px', color: '#6c757d', fontWeight: 600, marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Email
+            </div>
+            <div style={{ fontSize: '12px', color: '#3b5bdb', fontWeight: 600 }}>
+              ronald@gmail.com
+            </div>
+          </div>
+          <div
+            style={{
+              background: '#fff',
+              borderRadius: '8px',
+              padding: '8px 12px',
+              border: '1px solid #dce3f9',
+            }}
+          >
+            <div style={{ fontSize: '10px', color: '#6c757d', fontWeight: 600, marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Password
+            </div>
+            <div style={{ fontSize: '12px', color: '#3b5bdb', fontWeight: 600 }}>
+              admin
+            </div>
+          </div>
+        </div>
+      </div>
       <form onSubmit={login}>
         <div className="form w-100">
           <div className="fv-row mb-10">

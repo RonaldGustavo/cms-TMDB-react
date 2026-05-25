@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useLayout } from '../../layout/core';
 import { LogoMedia } from '../../../utilities/ImageImport';
 import AsideMenu from './AsideMenu';
+import { KTSVG } from 'utilities';
 
 const AsideDefault: FC = () => {
   const { config, classes } = useLayout();
@@ -47,7 +48,7 @@ const AsideDefault: FC = () => {
         {/* end::Logo */}
 
         {/* begin::Aside toggler */}
-        {/* {aside.minimize && (
+        {aside.minimize && (
           <div
             id="kt_aside_toggle"
             className="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle"
@@ -55,13 +56,12 @@ const AsideDefault: FC = () => {
             data-kt-toggle-state="active"
             data-kt-toggle-target="body"
             data-kt-toggle-name="aside-minimize">
-            {titleCMS()}
             <KTSVG
               path={'/media/icons/duotune/arrows/arr080.svg'}
               className={'svg-icon-1 rotate-180'}
             />
           </div>
-        )} */}
+        )}
         {/* end::Aside toggler */}
       </div>
       {/* end::Brand */}
