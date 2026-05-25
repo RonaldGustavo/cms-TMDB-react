@@ -3,14 +3,10 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { abbreviatedString } from 'utilities/AbbreviatedString';
-import { deleteCookie } from 'utilities/cookiesHelper';
-
 const HeaderUserMenu: FC = () => {
   const btnLogout = () => {
-    deleteCookie('key_token', () => {
-      localStorage.clear();
-      window.location.href = `/`;
-    });
+    localStorage.removeItem('key_token');
+    window.location.href = `/`;
   };
 
   const { dataUser } = useSelector((state: any) => state.Auth);

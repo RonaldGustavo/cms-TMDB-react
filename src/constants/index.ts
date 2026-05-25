@@ -1,5 +1,3 @@
-import { getCookie } from "utilities/cookiesHelper";
-
 //<-- CONFIG -->
 export const IS_LOADING = 'IS_LOADING';
 export const IS_LOADING_ROW = 'IS_LOADING_ROW';
@@ -19,4 +17,4 @@ export const GET_DATA_USER = 'GET_DATA_USER';
 
 
 
-export const token = getCookie('key_token')
+export const token = localStorage.getItem('key_token')

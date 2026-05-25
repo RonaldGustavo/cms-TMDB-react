@@ -1,5 +1,4 @@
 import { IS_LOADING, GET_DATA_USER } from '../../constants';
-import { setCookie } from 'utilities/cookiesHelper';
 
 export const loginAction = (userName: string) => {
   return (dispatch: any) => {
@@ -9,11 +8,7 @@ export const loginAction = (userName: string) => {
         payload: true,
       });
 
-      setCookie(
-        'key_token',
-        'value_token',
-        3000
-      );
+      localStorage.setItem('key_token', 'value_token');
 
       dispatch({
         type: GET_DATA_USER,
